@@ -1,0 +1,16 @@
+org/myself/gui/CustomersPageController.java
+ org.myself.gui.CustomersPageController
+org/myself/gui/OrdersPageController.java
+ org.myself.gui.OrdersPageController
+org/myself/gui/ProductsPageController.java
+ org.myself.gui.ProductsPageController
+org/myself/gui/SuppliersPageController.java
+ org.myself.gui.SuppliersPageController
+org/myself/gui/MenuController.java
+ org.myself.gui.MenuController
+org/myself/gui/DashboardController.java
+ org.myself.gui.DashboardController
+org/myself/gui/EmployeesPageController.java
+ org.myself.gui.EmployeesPageController
+org/myself/App.java
+ org.myself.App
