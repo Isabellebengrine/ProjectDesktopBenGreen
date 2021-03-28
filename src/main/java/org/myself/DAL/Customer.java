@@ -7,19 +7,19 @@ public class Customer {
     private String zipcode;
     private String city;
     private String phone;
-    private Employee salesrep;
+    //private Employee salesrep;
 
     public Customer() {
     }
 
-    public Customer(int id, String name, String address, String zipcode, String city, String phone, Employee salesrep) {
+    public Customer(int id, String name, String address, String zipcode, String city, String phone) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.zipcode = zipcode;
         this.city = city;
         this.phone = phone;
-        this.salesrep = salesrep;
+        //this.salesrep = salesrep;
     }
 
     public int getId() {
@@ -70,11 +70,11 @@ public class Customer {
         this.phone = phone;
     }
 
-    public Employee getSalesrep() {
-        return salesrep;
-    }
-
-    public void setSalesrep(Employee salesrep) {
-        this.salesrep = salesrep;
-    }
+//    public Employee getSalesrep() {
+//        return salesrep;
+//    }
+//
+//    public void setSalesrep(Employee salesrep) {
+//        this.salesrep = salesrep;
+//    }
 }

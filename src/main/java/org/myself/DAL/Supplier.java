@@ -7,19 +7,19 @@ public class Supplier {
     private String zipcode;
     private String city;
     private String phone;
-    private Supplierstype supplierstype;
+    //private Supplierstype supplierstype;
 
     public Supplier() {
     }
 
-    public Supplier(int id, String name, String address, String zipcode, String city, String phone, Supplierstype supplierstype) {
+    public Supplier(int id, String name, String address, String zipcode, String city, String phone) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.zipcode = zipcode;
         this.city = city;
         this.phone = phone;
-        this.supplierstype = supplierstype;
+        //this.supplierstype = supplierstype;
     }
 
     public int getId() {
@@ -70,11 +70,11 @@ public class Supplier {
         this.phone = phone;
     }
 
-    public Supplierstype getSupplierstype() {
-        return supplierstype;
-    }
-
-    public void setSupplierstype(Supplierstype supplierstype) {
-        this.supplierstype = supplierstype;
-    }
+//    public Supplierstype getSupplierstype() {
+//        return supplierstype;
+//    }
+//
+//    public void setSupplierstype(Supplierstype supplierstype) {
+//        this.supplierstype = supplierstype;
+//    }
 }

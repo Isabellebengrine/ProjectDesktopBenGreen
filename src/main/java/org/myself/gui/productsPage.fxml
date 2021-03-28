@@ -2,19 +2,22 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.myself.gui.ProductsPageController">
+<AnchorPane prefHeight="662.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.myself.gui.ProductsPageController">
    <children>
-      <Label fx:id="productsPageLabel" layoutX="221.0" layoutY="45.0" text="test page produits">
+      <Label fx:id="productsPageLabel" layoutX="221.0" layoutY="45.0" text="Produits" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
          <font>
             <Font name="Brush Script MT Italic" size="36.0" />
          </font></Label>
-      <Button fx:id="menuButton" layoutX="495.0" layoutY="328.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Menu">
+      <Button fx:id="menuButton" layoutX="495.0" layoutY="328.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Menu" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
          <font>
             <Font name="Brush Script MT Italic" size="18.0" />
          </font>
       </Button>
+      <Label layoutX="24.0" layoutY="74.0" text="Recherche :" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="70.0" />
+      <TextField fx:id="searchField" layoutX="106.0" layoutY="70.0" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="65.0" />
    </children>
 </AnchorPane>

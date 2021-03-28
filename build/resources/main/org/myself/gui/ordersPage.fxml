@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.myself.gui.OrdersPageController">
+<AnchorPane prefHeight="662.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.myself.gui.OrdersPageController">
    <children>
-      <Label fx:id="ordersPageLabel" layoutX="240.0" layoutY="83.0" text="test page orders">
+      <Label fx:id="ordersPageLabel" layoutX="240.0" layoutY="83.0" text="Commandes" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
          <font>
             <Font name="Brush Script MT Italic" size="36.0" />
          </font></Label>
-      <Button fx:id="menuButton" layoutX="512.0" layoutY="315.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Menu">
+      <Button fx:id="menuButton" layoutX="512.0" layoutY="315.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Menu" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
          <font>
             <Font name="Brush Script MT Italic" size="18.0" />
          </font>

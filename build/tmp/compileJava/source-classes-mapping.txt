@@ -1,16 +1,40 @@
-org/myself/App.java
- org.myself.App
-org/myself/gui/MenuController.java
- org.myself.gui.MenuController
 org/myself/gui/CustomersPageController.java
  org.myself.gui.CustomersPageController
-org/myself/gui/OrdersPageController.java
- org.myself.gui.OrdersPageController
 org/myself/gui/ProductsPageController.java
  org.myself.gui.ProductsPageController
-org/myself/gui/SuppliersPageController.java
- org.myself.gui.SuppliersPageController
-org/myself/gui/DashboardController.java
- org.myself.gui.DashboardController
+org/myself/DAL/Orderdetail.java
+ org.myself.DAL.Orderdetail
+org/myself/DAL/Supplierstype.java
+ org.myself.DAL.Supplierstype
+org/myself/DAL/Rubrique.java
+ org.myself.DAL.Rubrique
+org/myself/App.java
+ org.myself.App
 org/myself/gui/EmployeesPageController.java
  org.myself.gui.EmployeesPageController
+org/myself/DAL/Customer.java
+ org.myself.DAL.Customer
+org/myself/gui/DashboardController.java
+ org.myself.gui.DashboardController
+org/myself/DAL/Product.java
+ org.myself.DAL.Product
+org/myself/DAL/Totalorder.java
+ org.myself.DAL.Totalorder
+org/myself/DAL/Employee.java
+ org.myself.DAL.Employee
+org/myself/gui/OrdersPageController.java
+ org.myself.gui.OrdersPageController
+org/myself/gui/MenuController.java
+ org.myself.gui.MenuController
+org/myself/DAL/CustomerDAO.java
+ org.myself.DAL.CustomerDAO
+org/myself/DAL/Purchase.java
+ org.myself.DAL.Purchase
+org/myself/gui/SuppliersPageController.java
+ org.myself.gui.SuppliersPageController
+org/myself/DAL/Supplier.java
+ org.myself.DAL.Supplier
+org/myself/DAL/SupplierDAO.java
+ org.myself.DAL.SupplierDAO
+org/myself/DAL/BengreenDB.java
+ org.myself.DAL.BengreenDB

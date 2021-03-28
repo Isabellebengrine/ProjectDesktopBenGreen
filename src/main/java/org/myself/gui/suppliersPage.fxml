@@ -2,21 +2,35 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.myself.gui.SuppliersPageController">
+<AnchorPane prefHeight="662.0" prefWidth="910.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.myself.gui.SuppliersPageController">
    <children>
-      <Label fx:id="suppliersPageLabel" layoutX="176.0" layoutY="72.0" text="Fournisseurs">
+      <Label fx:id="suppliersPageLabel" layoutX="176.0" layoutY="72.0" text="Fournisseurs" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
          <font>
             <Font name="Brush Script MT Italic" size="36.0" />
          </font>
       </Label>
-      <Button fx:id="menuButton" layoutX="504.0" layoutY="338.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Menu">
+      <Button fx:id="menuButton" layoutX="837.0" layoutY="612.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Menu" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
          <font>
             <Font name="Brush Script MT Italic" size="18.0" />
          </font>
       </Button>
+      <Label layoutX="24.0" layoutY="74.0" text="Recherche :" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="70.0" />
+      <TextField fx:id="searchField" layoutX="106.0" layoutY="70.0" AnchorPane.leftAnchor="95.0" AnchorPane.topAnchor="65.0" />
+      <TableView fx:id="suppliersList" layoutX="22.0" layoutY="110.0" prefHeight="482.0" prefWidth="428.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="100.0">
+         <columns>
+            <TableColumn fx:id="IdColumn" prefWidth="27.20001220703125" text="Id" />
+            <TableColumn fx:id="NameColumn" prefWidth="101.60001373291016" text="Nom" />
+            <TableColumn fx:id="AddressColumn" prefWidth="129.5999755859375" text="Adresse" />
+            <TableColumn fx:id="zipcodeColumn" minWidth="0.0" prefWidth="54.4000244140625" text="Zipcode" />
+            <TableColumn fx:id="CityColumn" prefWidth="57.60003662109375" text="Ville" />
+            <TableColumn fx:id="phoneColumn" prefWidth="58.4000244140625" text="Téléphone" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>
