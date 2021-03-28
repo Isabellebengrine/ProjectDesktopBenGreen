@@ -38,3 +38,5 @@ org/myself/DAL/SupplierDAO.java
  org.myself.DAL.SupplierDAO
 org/myself/DAL/BengreenDB.java
  org.myself.DAL.BengreenDB
+org/myself/DAL/EmployeeDAO.java
+ org.myself.DAL.EmployeeDAO

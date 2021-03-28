@@ -3,16 +3,16 @@ package org.myself.DAL;
 public class Rubrique {
     private int id;
     private String name;
-    private Rubrique parent;
+    //private Rubrique parent;
     private String picture;
 
     public Rubrique() {
     }
 
-    public Rubrique(int id, String name, Rubrique parent, String picture) {
+    public Rubrique(int id, String name, String picture) {
         this.id = id;
         this.name = name;
-        this.parent = parent;
+        //this.parent = parent;
         this.picture = picture;
     }
 
@@ -32,13 +32,13 @@ public class Rubrique {
         this.name = name;
     }
 
-    public Rubrique getParent() {
-        return parent;
-    }
-
-    public void setParent(Rubrique parent) {
-        this.parent = parent;
-    }
+//    public Rubrique getParent() {
+//        return parent;
+//    }
+//
+//    public void setParent(Rubrique parent) {
+//        this.parent = parent;
+//    }
 
     public String getPicture() {
         return picture;

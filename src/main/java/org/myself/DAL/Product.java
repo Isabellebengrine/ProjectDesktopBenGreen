@@ -7,19 +7,20 @@ public class Product {
     private int stock;
     private String picture;
     private float price;
-    private Rubrique rubrique;
+    //private Rubrique rubrique;
 
     public Product() {
     }
 
-    public Product(int id, String name, String description, int stock, String picture, float price, Rubrique rubrique) {
+    public Product(int id, String name, String description, int stock, String picture, float price//, Rubrique rubrique
+                   ) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.stock = stock;
         this.picture = picture;
         this.price = price;
-        this.rubrique = rubrique;
+        //this.rubrique = rubrique;
     }
 
     public int getId() {
@@ -70,11 +71,11 @@ public class Product {
         this.price = price;
     }
 
-    public Rubrique getRubrique() {
-        return rubrique;
-    }
-
-    public void setRubrique(Rubrique rubrique) {
-        this.rubrique = rubrique;
-    }
+//    public Rubrique getRubrique() {
+//        return rubrique;
+//    }
+//
+//    public void setRubrique(Rubrique rubrique) {
+//        this.rubrique = rubrique;
+//    }
 }

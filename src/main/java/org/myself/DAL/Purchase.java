@@ -8,20 +8,21 @@ public class Purchase {
     private Date date;
     private Float price;
     private int quantity;
-    private Supplier supplier;
-    private Product product;
+    //private Supplier supplier;
+    //private Product product;
 
     public Purchase() {
     }
 
-    public Purchase(int id, String suppliersRef, Date date, Float price, int quantity, Supplier supplier, Product product) {
+    public Purchase(int id, String suppliersRef, Date date, Float price, int quantity//, Supplier supplier, Product product
+                     ) {
         this.id = id;
         this.suppliersRef = suppliersRef;
         this.date = date;
         this.price = price;
         this.quantity = quantity;
-        this.supplier = supplier;
-        this.product = product;
+        //this.supplier = supplier;
+        //this.product = product;
     }
 
     public int getId() {
@@ -64,19 +65,19 @@ public class Purchase {
         this.quantity = quantity;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
-    }
-
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
+//    public Supplier getSupplier() {
+//        return supplier;
+//    }
+//
+//    public void setSupplier(Supplier supplier) {
+//        this.supplier = supplier;
+//    }
+//
+//    public Product getProduct() {
+//        return product;
+//    }
+//
+//    public void setProduct(Product product) {
+//        this.product = product;
+//    }
 }

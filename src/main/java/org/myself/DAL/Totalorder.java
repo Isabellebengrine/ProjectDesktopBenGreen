@@ -12,12 +12,13 @@ public class Totalorder {
     private Date invoicedate;
     private String status;
     private Date updatedAt;
-    private Customer customer;
+    //private Customer customer;
 
     public Totalorder() {
     }
 
-    public Totalorder(int id, Date date, String billaddress, String deliveraddress, Float discount, int invoicenb, Date invoicedate, String status, Date updatedAt, Customer customer) {
+    public Totalorder(int id, Date date, String billaddress, String deliveraddress, Float discount,
+                      int invoicenb, Date invoicedate, String status, Date updatedAt) {
         this.id = id;
         this.date = date;
         this.billaddress = billaddress;
@@ -27,7 +28,7 @@ public class Totalorder {
         this.invoicedate = invoicedate;
         this.status = status;
         this.updatedAt = updatedAt;
-        this.customer = customer;
+        //this.customer = customer;
     }
 
     public int getId() {
@@ -102,11 +103,11 @@ public class Totalorder {
         this.updatedAt = updatedAt;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+//    public Customer getCustomer() {
+//        return customer;
+//    }
+//
+//    public void setCustomer(Customer customer) {
+//        this.customer = customer;
+//    }
 }
