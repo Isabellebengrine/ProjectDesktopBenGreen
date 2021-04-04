@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.myself.DAL.Customer;
 import org.myself.DAL.CustomerDAO;
@@ -38,6 +39,16 @@ public class ProductsPageController implements Initializable {
     public TableColumn<Product, String> PictureColumn;
     public TableColumn<Product, Float> PriceColumn;
     public TableColumn<Product, Integer> CategoryColumn;
+    public VBox detailsForm;
+    public TextField inputNom;
+    public TextField inputDescription;
+    public TextField inputStock;
+    public TextField inputPicture;
+    public TextField inputPrice;
+    public TextField inputCategory;
+    public Button btnOk;
+    public Button btnAnnuler;
+    public String nomBouton;
 
     ObservableList<Product> model = FXCollections.observableArrayList();
 
@@ -92,5 +103,13 @@ public class ProductsPageController implements Initializable {
         window.setTitle("Application desktop BenGreen");
         // 4. On affiche le stage:
         window.show();
+    }
+
+
+
+    public void enregistrer(ActionEvent actionEvent) {
+    }
+
+    public void annuler(ActionEvent actionEvent) {
     }
 }
