@@ -24,7 +24,8 @@ public class ProductDAO {
                         res.getString("products_description"),
                         res.getInt("products_stock"),
                         res.getString("products_picture"),
-                        res.getFloat("products_price")
+                        res.getFloat("products_price"),
+                        res.getInt("rubrique_id")
                 );
                 list.add(product);
             }
