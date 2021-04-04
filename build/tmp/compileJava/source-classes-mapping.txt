@@ -28,8 +28,8 @@ org/myself/DAL/RubriqueDAO.java
  org.myself.DAL.RubriqueDAO
 org/myself/DAL/Rubrique.java
  org.myself.DAL.Rubrique
-org/myself/DAL/ProductDAO.java
- org.myself.DAL.ProductDAO
+org/myself/DAL/OrderdetailDAO.java
+ org.myself.DAL.OrderdetailDAO
 org/myself/DAL/Totalorder.java
  org.myself.DAL.Totalorder
 org/myself/DAL/SupplierDAO.java
@@ -44,7 +44,7 @@ org/myself/gui/MenuController.java
  org.myself.gui.MenuController
 org/myself/gui/EmployeesPageController.java
  org.myself.gui.EmployeesPageController
-org/myself/DAL/OrderdetailDAO.java
- org.myself.DAL.OrderdetailDAO
+org/myself/DAL/ProductDAO.java
+ org.myself.DAL.ProductDAO
 org/myself/gui/ProductsPageController.java
  org.myself.gui.ProductsPageController
