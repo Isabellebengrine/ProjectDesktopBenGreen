@@ -102,6 +102,7 @@ public class ProductDAO {
             stm.setString(4, product.getPicture());
             stm.setFloat(5, product.getPrice());
             stm.setInt(6, product.getCategory());
+            stm.setInt(7, product.getId());
 
             stm.execute();
 
@@ -120,7 +121,7 @@ public class ProductDAO {
      */
     public void delete(Product product) {
         try {
-            PreparedStatement stm = bengreenDB.getConnection().prepareStatement("DELETE FROM products WHERE product_id = ?;");
+            PreparedStatement stm = bengreenDB.getConnection().prepareStatement("DELETE FROM products WHERE id = ?;");
 
             stm.setInt(1, product.getId());
 
@@ -135,5 +136,26 @@ public class ProductDAO {
             System.out.println(e.getMessage());
         }
     }
+
+    public int findIdByNameAndPicture(Product product)     {
+
+        try {
+            PreparedStatement stm = bengreenDB.getConnection().prepareStatement("SELECT * FROM products WHERE products_name = ? AND products_picture = ?");
+            stm.setString(1, product.getName());
+            stm.setString(2, product.getPicture());
+            ResultSet result =stm.executeQuery ();
+            while (result.next()) {
+                product.setId(result.getInt("id"));
+            }
+            stm.close();
+            result.close();
+
+        } catch (Exception e) {
+            System.out.println("Erreur");
+            System.out.println(e.getMessage());
+        }
+        return product.getId();
+    }
+
 
 }

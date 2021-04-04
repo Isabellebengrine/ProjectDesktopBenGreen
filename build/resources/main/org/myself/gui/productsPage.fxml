@@ -51,7 +51,7 @@
          </font>
       </Button>
 
-      <VBox fx:id="detailsForm" layoutX="13.0" layoutY="61.0" prefHeight="512.0" prefWidth="668.0" spacing="20.0" style="-fx-border-color: blue;" visible="false">
+      <VBox fx:id="detailsForm" layoutX="13.0" layoutY="61.0" prefHeight="512.0" prefWidth="668.0" spacing="5.0" style="-fx-border-color: blue;" visible="false">
          <children>
             <Label text="Détails">
                <font>
@@ -64,36 +64,42 @@
                   <TextField fx:id="inputNom" prefHeight="26.0" prefWidth="578.0" />
                </children>
             </HBox>
+            <Label fx:id="errorName" prefHeight="18.0" prefWidth="741.0" text="msg erreur nom" textFill="RED" visible="false" />
             <HBox spacing="15.0">
                <children>
                   <Label text="Description" />
                   <TextField fx:id="inputDescription" prefHeight="26.0" prefWidth="580.0" />
                </children>
             </HBox>
+            <Label fx:id="errorDescription" prefHeight="18.0" prefWidth="741.0" text="msg erreur description" textFill="RED" visible="false" />
             <HBox spacing="45.0">
                <children>
                   <Label text="Stock" />
                   <TextField fx:id="inputStock" prefHeight="26.0" prefWidth="156.0" />
                </children>
             </HBox>
+            <Label fx:id="errorStock" prefHeight="18.0" prefWidth="741.0" text="msg erreur stock" textFill="RED" visible="false" />
             <HBox spacing="40.0">
                <children>
                   <Label text="Photo" />
                   <TextField fx:id="inputPicture" prefHeight="26.0" prefWidth="580.0" />
                </children>
             </HBox>
+            <Label fx:id="errorPicture" prefHeight="18.0" prefWidth="741.0" text="msg erreur photo" textFill="RED" visible="false" />
             <HBox spacing="50.0">
                <children>
                   <Label text="Prix" />
                   <TextField fx:id="inputPrice" prefHeight="26.0" prefWidth="156.0" />
                </children>
             </HBox>
+            <Label fx:id="errorPrice" prefHeight="18.0" prefWidth="741.0" text="msg erreur prix" textFill="RED" visible="false" />
             <HBox spacing="20.0">
                <children>
                   <Label text="Catégorie" />
                   <TextField fx:id="inputCategory" prefHeight="26.0" prefWidth="156.0" />
                </children>
             </HBox>
+            <Label fx:id="errorCategory" prefHeight="18.0" prefWidth="741.0" text="msg erreur catégorie" textFill="RED" visible="false" />
             <HBox prefHeight="34.0" prefWidth="655.0" spacing="300.0">
                <children>
                   <Button fx:id="btnOk" mnemonicParsing="false" onAction="#enregistrer" prefHeight="25.0" prefWidth="60.0" text="OK" />

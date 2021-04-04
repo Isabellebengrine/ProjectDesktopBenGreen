@@ -14,14 +14,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.myself.DAL.Customer;
-import org.myself.DAL.CustomerDAO;
 import org.myself.DAL.Product;
 import org.myself.DAL.ProductDAO;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ProductsPageController implements Initializable {
@@ -51,6 +49,12 @@ public class ProductsPageController implements Initializable {
     public String nomBouton;
     public Label searchLabel;
     public Label msgErreur;
+    public Label errorName;
+    public Label errorDescription;
+    public Label errorStock;
+    public Label errorPicture;
+    public Label errorPrice;
+    public Label errorCategory;
 
     ObservableList<Product> model = FXCollections.observableArrayList();
 
@@ -139,6 +143,7 @@ public class ProductsPageController implements Initializable {
         searchField.setVisible(false);
         productsList.setVisible(false);
         detailsForm.setVisible(true);
+        clearErrorMsgs();
         //stocker nom bouton dans variable :
         nomBouton = ((Button) actionEvent.getSource()).getText();
         //remettre champs input à zéro:
@@ -146,7 +151,7 @@ public class ProductsPageController implements Initializable {
     }
 
     public void modifier(ActionEvent actionEvent) {
-
+        clearErrorMsgs();
         nomBouton = ((Button) actionEvent.getSource()).getText();
         Product p = productsList.getSelectionModel().getSelectedItem();
         //afficher message erreur si rien de sélectionné dans le tableau :
@@ -175,57 +180,198 @@ public class ProductsPageController implements Initializable {
             searchField.setVisible(false);
             productsList.setVisible(false);
             detailsForm.setVisible(true);
+            clearErrorMsgs();
             //remplir champs avec infos:
             showDetails(p);
         }
     }
 
     public void enregistrer(ActionEvent actionEvent) throws SQLException {
-        detailsForm.setVisible(false);
-        searchLabel.setVisible(true);
-        searchField.setVisible(true);
-        productsList.setVisible(true);
         ProductDAO repo = new ProductDAO();
-
         //if clic sur ajouter alors ajout en bdd:
-            if (nomBouton.equals("Ajouter")) {
+        if (nomBouton.equals("Ajouter")) {
+            //vérification des champs :
+            if(verifName() && verifDescription() && verifStock() && verifPicture() && verifPrice() && verifCategory()) {
 
-            Product product = new Product();
-            product.setName(inputNom.getText());
-            product.setDescription(inputDescription.getText());
-            product.setStock(Integer.parseInt(inputStock.getText()));
-            product.setPrice(Float.parseFloat(inputPrice.getText()));
-            product.setPicture(inputPicture.getText());
-            product.setCategory(Integer.parseInt(inputCategory.getText()));
-            repo.insert(product);
-            //mise à jour du tableview pour afficher nvo product :
-            model.add(product);
-            productsList.setItems(model);
+                Product product = new Product();
+                product.setName(inputNom.getText());
+                product.setDescription(inputDescription.getText());
+                product.setStock(Integer.parseInt(inputStock.getText()));
+                product.setPrice(Float.parseFloat(inputPrice.getText()));
+                product.setPicture(inputPicture.getText());
+                product.setCategory(Integer.parseInt(inputCategory.getText()));
+                repo.insert(product);
+                //mise à jour de l'affichage :
+                detailsForm.setVisible(false);
+                searchLabel.setVisible(true);
+                searchField.setVisible(true);
+                productsList.setVisible(true);
+                //mise à jour du tableview pour afficher nvo product :
+                product.setId(repo.findIdByNameAndPicture(product));
+                model.add(product);
+                productsList.setItems(model);
+            }
 
         } else if (nomBouton.equals("Modifier")) {
+
             Product product = productsList.getSelectionModel().getSelectedItem();
-            //modifier dans la bdd :
-            product.setName(inputNom.getText());
-            product.setDescription(inputDescription.getText());
-            product.setStock(Integer.parseInt(inputStock.getText()));
-            product.setPrice(Float.parseFloat(inputPrice.getText()));
-            product.setPicture(inputPicture.getText());
-            product.setCategory(Integer.parseInt(inputCategory.getText()));
-            repo.update(product);
+            product.setId(repo.findIdByNameAndPicture(product));
 
-            //mise à jour du tableview pour montrer modification :
-            int selectedIndex = productsList.getSelectionModel().getSelectedIndex();
-            productsList.getItems().set(selectedIndex, product);
+            //vérification des champs :
+            if(verifName() && verifDescription() && verifStock() && verifPicture() && verifPrice() && verifCategory()) {
 
+                //création de l'alerte :
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Modification");
+                alert.setHeaderText("Modifier le Produit numéro " + product.getId() + " ?");
+                alert.setContentText("Etes-vous s\u00FBr de vouloir modifier ce produit ?");
+
+                //si ok modification de la ligne, sinon rien
+                Optional<ButtonType> result = alert.showAndWait();
+
+                //noinspection OptionalGetWithoutIsPresent
+                if (result.get() == ButtonType.OK) {
+                    //modifier dans la bdd :
+                    product.setName(inputNom.getText());
+                    product.setDescription(inputDescription.getText());
+                    product.setStock(Integer.parseInt(inputStock.getText()));
+                    product.setPrice(Float.parseFloat(inputPrice.getText()));
+                    product.setPicture(inputPicture.getText());
+                    product.setCategory(Integer.parseInt(inputCategory.getText()));
+                    repo.update(product);//test 04/04 ok
+
+                    //mise à jour de l'affichage :
+                    detailsForm.setVisible(false);
+                    searchLabel.setVisible(true);
+                    searchField.setVisible(true);
+                    productsList.setVisible(true);
+                    //mise à jour du tableview pour montrer modification :
+                    int selectedIndex = productsList.getSelectionModel().getSelectedIndex();
+                    productsList.getItems().set(selectedIndex, product);
+                }
+            }
         } else if (nomBouton.equals("Supprimer")) {
 
             Product product = productsList.getSelectionModel().getSelectedItem();
-            //supprimer de la bdd :
-            repo.delete(product);
-            //mise à jour du tableview pour montrer suppression :
-            model.remove(product);
-            productsList.setItems(model);
+            product.setId(repo.findIdByNameAndPicture(product));
+
+            //creation de la boite d'alert
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Suppression");
+            alert.setHeaderText("Supprimer le Produit numéro " + product.getId() + " : " + inputNom.getText() + " de la catégorie " + inputCategory.getText() + " ?");
+            alert.setContentText("Etes-vous sûr de vouloir supprmier ce produit ? (Attention, action irréversible)");
+
+            //si ok suppression de la ligne, sinon rien
+            Optional<ButtonType> result = alert.showAndWait();
+
+            //noinspection OptionalGetWithoutIsPresent
+            if (result.get() == ButtonType.OK) {
+
+                //supprimer de la bdd :
+                repo.delete(product);//test 04/04 ok
+                //mise à jour du tableview pour montrer suppression :
+                model.remove(product);
+                productsList.setItems(model);
+            }
         }
+    }
+
+    //regex name, description, picture
+    public boolean CheckString(String check) {
+        return check.matches("^[A-Za-z .]+$");
+    }
+    //regex picture
+    public boolean CheckFileName(String check) {
+        return check.matches("^[A-Za-z0-9:./]+$");
+    }
+    //regex stock, category
+    public boolean CheckInt(String check) { return check.matches("^[0-9]+$"); }
+    //regex price
+    public boolean CheckPrice(String check) {return check.matches("^[0-9.]+$"); }
+
+    //verif regex Name
+    public boolean verifName() {
+        //si ok
+        if (CheckString(inputNom.getText())) {
+            errorName.setVisible(false);
+            errorName.setText("");
+            return true;
+            //si pas ok
+        } else {
+            errorName.setText("Le nom ne doit contenir que des lettres, espaces ou .");
+            errorName.setVisible(true);
+        }
+        return false;
+    }
+    //verif regex Description
+    public boolean verifDescription() {
+        //si ok
+        if (CheckString(inputDescription.getText())) {
+            errorDescription.setVisible(false);
+            errorDescription.setText("");
+            return true;
+            //si pas ok
+        } else {
+            errorDescription.setText("La description ne doit contenir que des lettres, espaces ou .");
+            errorDescription.setVisible(true);
+        }
+        return false;
+    }
+    //verif regex stock
+    public boolean verifStock() {
+        //si ok
+        if (CheckInt(inputStock.getText())) {
+            errorStock.setVisible(false);
+            errorStock.setText("");
+            return true;
+            //si pas ok
+        } else {
+            errorStock.setText("Le stock est un nombre.");
+            errorStock.setVisible(true);
+        }
+        return false;
+    }
+    //verif regex Picture
+    public boolean verifPicture() {
+        //si ok
+        if (CheckFileName(inputPicture.getText())) {
+            errorPicture.setVisible(false);
+            errorPicture.setText("");
+            return true;
+            //si pas ok
+        } else {
+            errorPicture.setText("Le nom de la photo ne va pas, revoyez votre saisie");
+            errorPicture.setVisible(true);
+        }
+        return false;
+    }
+    //verif regex price
+    public boolean verifPrice() {
+        //si ok
+        if (CheckPrice(inputPrice.getText())) {
+            errorPrice.setVisible(false);
+            errorPrice.setText("");
+            return true;
+            //si pas ok
+        } else {
+            errorPrice.setText("Le prix est un nombre (avec . si decimal).");
+            errorPrice.setVisible(true);
+        }
+        return false;
+    }
+    //verif regex category
+    public boolean verifCategory() {
+        //si ok
+        if (CheckInt(inputCategory.getText())) {
+            errorCategory.setVisible(false);
+            errorCategory.setText("");
+            return true;
+            //si pas ok
+        } else {
+            errorCategory.setText("Ce champ est un nombre.");
+            errorCategory.setVisible(true);
+        }
+        return false;
     }
 
     public void annuler(ActionEvent actionEvent) {
@@ -239,7 +385,16 @@ public class ProductsPageController implements Initializable {
         inputCategory.clear();
         inputPrice.clear();
         inputPicture.clear();
+        clearErrorMsgs();
     }
 
+    public void clearErrorMsgs() {
+        errorCategory.setText("");
+        errorName.setText("");
+        errorDescription.setText("");
+        errorPicture.setText("");
+        errorPrice.setText("");
+        errorStock.setText("");
+    }
 
 }
